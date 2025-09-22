@@ -2,6 +2,8 @@ import express from 'express'
 import 'dotenv/config';
 import mongoose from 'mongoose';
 
+import { router } from './router.js';
+
 const mongoURI = process.env.MONGODB_URI;
 
 if (!mongoURI) {
@@ -13,6 +15,9 @@ mongoose.connect(mongoURI)
   .then(() => {
     const app = express();
     const port = 3001;
+
+    app.use(express.json());
+    app.use(router);
 
     app.listen(port, () => {
       console.log(`🚀 Server is running in http://localhost:${port}`)
