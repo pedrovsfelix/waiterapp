@@ -3,8 +3,6 @@ import type { SVGProps } from "react";
 const SvgUsers = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="1em"
-    height="1em"
     fill="none"
     viewBox="0 0 24 24"
     {...props}
@@ -13,7 +11,7 @@ const SvgUsers = (props: SVGProps<SVGSVGElement>) => (
       cx={7.999}
       cy={8.509}
       r={3.491}
-      stroke="#666"
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
@@ -22,13 +20,13 @@ const SvgUsers = (props: SVGProps<SVGSVGElement>) => (
       cx={17.003}
       cy={9.499}
       r={2.501}
-      stroke="#666"
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
     />
     <path
-      stroke="#666"
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
