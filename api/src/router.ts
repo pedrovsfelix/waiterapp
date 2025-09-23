@@ -1,5 +1,5 @@
 import path from 'node:path';
-
+import { fileURLToPath } from 'node:url';
 import { Router } from "express";
 import multer from 'multer';
 
@@ -7,6 +7,9 @@ import { listCategories } from "./app/useCases/categories/listCategory.js";
 import { createCategories } from "./app/useCases/categories/createCategory.js";
 import { listProducts } from "./app/useCases/products/listProducts.js";
 import { createProduct } from './app/useCases/products/createProduct.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export const router = Router();
 
@@ -19,8 +22,7 @@ const upload = multer({
       callback(null, `${Date.now()}-${file.originalname}`);
     }
   }),
-})
-
+});
 // List categories
 router.get('/categories', listCategories)
 
