@@ -7,6 +7,7 @@ import { listCategories } from "./app/useCases/categories/listCategory.js";
 import { createCategories } from "./app/useCases/categories/createCategory.js";
 import { listProducts } from "./app/useCases/products/listProducts.js";
 import { createProduct } from './app/useCases/products/createProduct.js';
+import { listProductsByCategory } from './app/useCases/categories/listProductsByCategory.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,9 +37,7 @@ router.get('/products', listProducts)
 router.post('/products', upload.single('image') ,createProduct)
 
 // Get product by category
-router.get('/categories/:categoryId/products', (req, res) => {
-  res.send('OK')
-})
+router.get('/categories/:categoryId/products', listProductsByCategory)
 
 // List orders
 router.get('/orders', (req, res) => {
