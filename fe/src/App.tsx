@@ -1,5 +1,13 @@
-import { Trash } from "./ui/icons";
+import Header from "./ui/components/Header";
+import Navbar from "./ui/components/Navbar";
 
 export default function App() {
-  return <h1 className="text-primary-light"> <Trash className="w-6 h-6 text-black"/> Hello </h1>;
+  return (
+    <div className="flex">
+      <Navbar />
+      <div className="flex flex-col w-full h-full">
+        <Header />
+      </div>
+    </div>
+  );
 }
