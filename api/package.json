@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "start": "node dist/src/index.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
