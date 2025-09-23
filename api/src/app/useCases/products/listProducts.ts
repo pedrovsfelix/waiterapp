@@ -6,7 +6,7 @@ export async function listProducts(req: Request, res: Response) {
   try {
     const products = await Product.find();
 
-    res.sendStatus(200).json(products);
+    res.status(200).json(products);
   } catch {
 
     res.sendStatus(500);

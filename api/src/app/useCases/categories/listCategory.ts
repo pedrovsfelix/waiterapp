@@ -5,8 +5,9 @@ import { Category } from "../../models/Category.js";
 export async function listCategories(req: Request, res: Response) {
   try {
     const categories = await Category.find();
+    console.log(categories)
 
-    res.sendStatus(200).json(categories);
+    res.status(200).json(categories);
   } catch {
 
     res.sendStatus(500);
