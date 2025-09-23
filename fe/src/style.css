@@ -1,1 +1,32 @@
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "General Sans", sans-serif;
+
+  --color-primary: #D73035;
+  --color-primary-dark: #8A1114;
+  --color-primary-light: #FFABAD;
+
+  --color-gray-900: #333333;
+  --color-gray-700: #666666;
+  --color-gray-500: #999999;
+  --color-gray-300: #CCCCCC;
+  --color-gray-100: #F2F2F2;
+
+  --color-white: #FFFFFF;
+
+  --text-display: 56px;
+  --text-h1: 48px;
+  --text-h2: 40px;
+  --text-h3: 32px;
+  --text-h4: 24px;
+  --text-h5: 20px;
+  --text-h6: 16px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+
+  --leading-120: 1.2;
+  --leading-150: 1.5;
+}
