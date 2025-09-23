@@ -8,6 +8,8 @@ import { createCategories } from "./app/useCases/categories/createCategory.js";
 import { listProducts } from "./app/useCases/products/listProducts.js";
 import { createProduct } from './app/useCases/products/createProduct.js';
 import { listProductsByCategory } from './app/useCases/categories/listProductsByCategory.js';
+import { listOrders } from './app/useCases/orders/listOrders.js';
+import { createOrder } from './app/useCases/orders/createOrder.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -40,14 +42,10 @@ router.post('/products', upload.single('image') ,createProduct)
 router.get('/categories/:categoryId/products', listProductsByCategory)
 
 // List orders
-router.get('/orders', (req, res) => {
-  res.send('OK')
-})
+router.get('/orders', listOrders)
 
 // Create order
-router.post('/orders', (req, res) => {
-  res.send('OK')
-})
+router.post('/orders', createOrder)
 
 // Change order status
 router.patch('/orders/:orderId', (req, res) => {
