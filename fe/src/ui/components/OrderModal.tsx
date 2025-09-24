@@ -1,13 +1,30 @@
+import { useEffect } from "react";
 import { formatCurrency } from "../../app/utils/formatCurrency";
 import type { Order } from "../../types/Order";
 import { Close } from "../icons";
+import Button from "./Button";
 
 interface OrderModalProps {
   visible: boolean;
   order: Order | null;
+  onClose(): void;
 }
 
-export default function OrderModal({ visible, order }: OrderModalProps) {
+export default function OrderModal({ visible, order, onClose }: OrderModalProps) {
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+
+  }, [onClose])
 
   if(!visible || !order ) {
     return null
@@ -24,7 +41,10 @@ export default function OrderModal({ visible, order }: OrderModalProps) {
           <strong className="text-2xl">
             Mesa {order.table}
           </strong>
-          <button type="button" className="cursor-pointer bg-transparent border-0 w-8 h-8 text-black p-0">
+          <button
+            onClick={onClose}
+            type="button"
+            className="cursor-pointer bg-transparent border-0 w-8 h-8 text-black p-0">
             <Close />
           </button>
         </header>
@@ -74,11 +94,14 @@ export default function OrderModal({ visible, order }: OrderModalProps) {
           <strong>{formatCurrency(total)}</strong>
         </div>
 
-        <footer>
-          <button type="button" className="bg-gray-900 rounded-[48px] text-white py-3 px-">
-            <span>🧑🏼‍🍳</span>
-            <strong></strong>
-          </button>
+        <footer className="flex items-center justify-between">
+          <Button
+            children="Cancelar Pedido"
+            className="p-0 bg-transparent text-primary"
+          />
+          <Button
+            children="Concluir Pedido"
+          />
         </footer>
       </div>
     </div>
