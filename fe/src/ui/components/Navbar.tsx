@@ -3,7 +3,7 @@ import NavButton from "./NavButton";
 
 export default function Navbar() {
   return (
-    <nav className="bg-white flex flex-col items-center justify-between gap-14 w-[108px]">
+    <nav className="bg-white flex flex-col items-center justify-between gap-14 w-[108px] h-full sticky">
       <div>
         <NavButton
           label="WA"
