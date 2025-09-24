@@ -75,7 +75,7 @@ export default function OrderModal({ visible, order }: OrderModalProps) {
         </div>
 
         <footer>
-          <button type="button" className="bg-gray-900 rounded-[48px] text-white py-3">
+          <button type="button" className="bg-gray-900 rounded-[48px] text-white py-3 px-">
             <span>🧑🏼‍🍳</span>
             <strong></strong>
           </button>
