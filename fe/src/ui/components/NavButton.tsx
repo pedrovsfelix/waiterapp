@@ -13,7 +13,7 @@ export default function NavButton({ label, icon, disabled,isActive, ...props }: 
       {...props}
       disabled={disabled || isActive}
       className={cn(
-        'w-full flex flex-col gap-2 items-center font-medium justify-center relative text-sm',
+        'w-full h-[108px] flex flex-col gap-2 items-center font-medium justify-center relative text-sm',
         isActive && 'text-primary after:content-[""] after:block after:absolute after:h-[2px] after:bg-current after:w-[12px] after:left-1/2 after:-translate-x-1/2 after:bottom-4',
         disabled && 'text-gray-700'
       )}
