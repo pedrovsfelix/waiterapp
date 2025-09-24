@@ -17,12 +17,18 @@ export default function OrdersBoard({ icon, title, orders }: OrdersBoardProps) {
     setSelectedOrder(order);
   }
 
+    function handleCloseModal() {
+    setIsModalVisible(false);
+    setSelectedOrder(null);
+  }
+
   return (
     <div className="p-4 border-gray-300 border-solid border-[1px] rounded-lg flex-1">
 
       <OrderModal
         visible={isModalVisible}
         order={selectedOrder}
+        onClose={handleCloseModal}
       />
       <header className="flex items-center justify-center gap-2">
         <span>
