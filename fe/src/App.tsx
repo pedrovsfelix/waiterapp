@@ -1,7 +1,12 @@
-import Login from "./ui/pages/Login";
+import { ToastContainer } from "react-toastify";
+// import 'react-toastify/ReactToastify.css';
+import Home from "./ui/pages/Home";
 
 export default function App() {
   return (
-    <Login />
+    <>
+      <Home />
+      <ToastContainer position="bottom-center" />
+    </>
   );
 }
