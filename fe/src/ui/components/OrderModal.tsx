@@ -8,9 +8,12 @@ interface OrderModalProps {
   visible: boolean;
   order: Order | null;
   onClose(): void;
+  onCancelOrder(): Promise<void>;
+  isLoading: boolean;
+  onChangeOrderStatus(): void;
 }
 
-export default function OrderModal({ visible, order, onClose }: OrderModalProps) {
+export default function OrderModal({ visible, order, onClose, onCancelOrder, onChangeOrderStatus, isLoading }: OrderModalProps) {
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
@@ -95,13 +98,20 @@ export default function OrderModal({ visible, order, onClose }: OrderModalProps)
         </div>
 
         <footer className="flex items-center justify-between">
+
           <Button
+            onClick={onCancelOrder}
             children="Cancelar Pedido"
             className="p-0 bg-transparent text-primary"
+            disabled={isLoading}
           />
-          <Button
-            children="Concluir Pedido"
-          />
+          {order.status !== 'DONE' && (
+            <Button
+              onClick={onChangeOrderStatus}
+              children={order.status === 'WAITING' ? 'Iniciar Produção' : 'Concluir Pedido'}
+              disabled={isLoading}
+            />
+          )}
         </footer>
       </div>
     </div>
