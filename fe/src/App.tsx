@@ -1,11 +1,10 @@
 import { ToastContainer } from "react-toastify";
-// import 'react-toastify/ReactToastify.css';
-import Home from "./ui/pages/Home";
+import { Router } from "./router";
 
 export default function App() {
   return (
     <>
-      <Home />
+      <Router />
       <ToastContainer position="bottom-center" />
     </>
   );

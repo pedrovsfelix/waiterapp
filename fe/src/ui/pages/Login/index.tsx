@@ -1,7 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 
 export default function Login() {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+
+    navigate('/', {replace: true})
+  }
   return (
     <div className="flex h-screen flex-col items-center justify-center">
       <div className="w-[384px]">
@@ -24,7 +31,9 @@ export default function Login() {
               placeholder="Senha"
             />
 
-            <Button children="Fazer Login" />
+            <Button
+              onClick={handleLogin}
+              children="Fazer Login" />
           </form>
         </div>
       </div>
