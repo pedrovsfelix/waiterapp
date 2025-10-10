@@ -35,7 +35,7 @@ export default forwardRef<HTMLInputElement, InputProps>(
 
         {error && (
           <div className="flex items-center gap-2 mt-2 text-primary">
-            <Info />
+            <Info className="w-[15px] h-[15px]" />
             <span className="text-xs">{error}</span>
           </div>
         )}
