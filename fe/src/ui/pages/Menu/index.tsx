@@ -1,7 +1,11 @@
+import Header from "../../components/Header";
+import Products from "../../components/Products";
+
 export default function Menu() {
   return (
     <>
-      <h1>Menu</h1>
+      <Header />
+      <Products />
     </>
   )
 }
