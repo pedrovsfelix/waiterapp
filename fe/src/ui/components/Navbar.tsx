@@ -1,8 +1,11 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { Home, LogOff, Menu, Order, Profile, Users } from "../icons";
 import NavButton from "./NavButton";
+import { useAuth } from "../../app/hooks/useAuth";
 
 export default function Navbar() {
+
+    const { signout } = useAuth();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -50,7 +53,7 @@ export default function Navbar() {
         path: '/logout',
         label: 'Sair',
         icon: <LogOff />,
-        onClick: () => console.log('Fazendo Logout...')
+        onClick: () => signout()
       },
     ];
 
