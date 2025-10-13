@@ -14,6 +14,12 @@ import { createOrder } from './app/useCases/orders/createOrder.js';
 import { changeOrderStatus } from './app/useCases/orders/changeOrderStatus.js';
 import { cancelOrder } from './app/useCases/orders/cancelOrder.js';
 import { changeProduct } from './app/useCases/products/changeProduct.js';
+import { signinValidation, signupValidation, validate } from './app/middleware/validation.js';
+import { signup } from './app/useCases/auth/signup.js';
+import { signin } from './app/useCases/auth/signin.js';
+import { isAuthenticated } from './app/middleware/auth.js';
+import { me } from './app/useCases/auth/me.js';
+import { deleteProduct } from './app/useCases/products/deleteProduct.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,6 +51,9 @@ router.get('/products', listProducts)
 // Create product
 router.post('/products', upload.single('image') ,createProduct)
 
+// Delete product
+router.delete('/products/:productId', deleteProduct)
+
 // Change product
 router.patch('/products/:productId', upload.single('image'), changeProduct)
 
@@ -62,3 +71,12 @@ router.patch('/orders/:orderId', changeOrderStatus)
 
 // Delete/Cancel order
 router.delete('/orders/:orderId', cancelOrder)
+
+// Signup
+router.post('/auth/signup', signupValidation, validate, signup);
+
+// Signin
+router.post('/auth/signin', signinValidation, validate, signin);
+
+// Me
+router.get('/users/me', isAuthenticated, me);
