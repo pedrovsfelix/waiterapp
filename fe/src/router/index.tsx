@@ -7,41 +7,57 @@ import Users from "../ui/pages/Users";
 import Menu from "../ui/pages/Menu";
 import DefaultLayout from "../ui/layouts/DefaultLayout";
 import History from "../ui/pages/History";
+import { AuthGuard } from "./AuthGuard";
+import Products from "../ui/components/Products";
+import Category from "../ui/components/Category";
 
-const routes = [
+export const router = createBrowserRouter([
+
   {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    element: <DefaultLayout />,
+    element: <AuthGuard isPrivate={false} />,
     children: [
       {
-        path: '/',
-        element: <Home />,
+        path: "/login",
+        element: <Login />,
       },
-      {
-        path: '/history',
-        element: <History />,
-      },
-      {
-        path: '/menu',
-        element: <Menu />,
-      },
-      {
-        path: '/users',
-        element: <Users />,
-      },
-      {
-        path: '/profile',
-        element: <Profile />,
-      },
-    ]
+    ],
   },
+
+  {
+    element: <AuthGuard isPrivate />,
+    children: [
+      {
+        element: <DefaultLayout />,
+        children: [
+          { path: "/", element: <Home /> },
+          { path: "/history", element: <History /> },
+          {
+             path: "/menu",
+            element: <Menu />,
+            children: [
+              {
+                index: true,
+                element: <Products />
+              },
+              {
+                path: "products",
+                element: <Products />
+              },
+              {
+                path: "category",
+                element: <Category />
+              },
+            ]
+          },
+          { path: "/users", element: <Users /> },
+          { path: "/profile", element: <Profile /> },
+        ],
+      },
+    ],
+  },
+
   {
     path: "*",
     element: <NotFound />,
   },
-];
-
-export const router = createBrowserRouter(routes);
+]);

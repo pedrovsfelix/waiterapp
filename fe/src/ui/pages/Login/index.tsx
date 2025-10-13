@@ -1,14 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import { useLoginController } from "./useLoginController";
 
 export default function Login() {
-  const navigate = useNavigate();
+  const { handleSubmit, register, errors, isLoading } = useLoginController();
 
-  const handleLogin = () => {
-
-    navigate('/', {replace: true})
-  }
   return (
     <div className="flex h-screen flex-col items-center justify-center">
       <div className="w-[384px]">
@@ -19,21 +15,27 @@ export default function Login() {
               <strong>WAITER</strong>APP
             </h1>
           </header>
-          <form className="flex flex-col gap-4 w-full">
+
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
             <Input
               type={"email"}
               placeholder="E-mail"
-              error="E-mail incorreto. Tente novamente"
+              error={errors.email?.message}
+              {...register('email')}
             />
 
             <Input
               type={"password"}
               placeholder="Senha"
+              error={errors.password?.message}
+              {...register('password')}
             />
 
             <Button
-              onClick={handleLogin}
-              children="Fazer Login" />
+              type="submit"
+              children="Fazer Login"
+              isLoading={isLoading}
+            />
           </form>
         </div>
       </div>
