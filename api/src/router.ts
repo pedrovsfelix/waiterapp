@@ -20,6 +20,7 @@ import { signin } from './app/useCases/auth/signin.js';
 import { isAuthenticated } from './app/middleware/auth.js';
 import { me } from './app/useCases/auth/me.js';
 import { deleteProduct } from './app/useCases/products/deleteProduct.js';
+import { listUsers } from './app/useCases/users/listUsers.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -80,3 +81,6 @@ router.post('/auth/signin', signinValidation, validate, signin);
 
 // Me
 router.get('/users/me', isAuthenticated, me);
+
+// List Users
+router.get('/users', listUsers);

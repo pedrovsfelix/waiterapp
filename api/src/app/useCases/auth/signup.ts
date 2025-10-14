@@ -13,7 +13,7 @@ export async function signup(req: Request, res: Response) {
 
     try {
 
-        const { name, email, password } = req.body;
+        const { name, email, password, type } = req.body;
 
         const userExists = await User.findOne({ email });
         if (userExists) {
@@ -27,7 +27,7 @@ export async function signup(req: Request, res: Response) {
             name,
             email,
             password: hashedPassword,
-            type: 'WAITER'
+            type
         });
 
         const payload = {
