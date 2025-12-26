@@ -10,7 +10,7 @@ const SvgLoading = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      stroke="#666"
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
