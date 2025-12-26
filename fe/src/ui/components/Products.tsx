@@ -23,7 +23,7 @@ export default function Products() {
     <div>
       <header className="h-[72px] w-full flex justify-between">
         <div className="flex items-center gap-4">
-          <h3 className="font-bold">Products</h3>
+          <h3 className="font-bold">Produtos</h3>
           <span className="bg-gray-300/20 w-[26px] h-[26px] rounded-lg text-center">
             {products.length}
           </span>
