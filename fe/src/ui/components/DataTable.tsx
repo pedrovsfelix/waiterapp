@@ -25,8 +25,8 @@ export function DataTable<TData>({ columns, data }: DataTableProps<TData>) {
   });
 
   return (
-    <table className="min-w-full border-collapse border border-gray-300 rounded-md">
-      <thead className="bg-gray-100">
+    <table className="min-w-full border-collapse border border-gray-300">
+      <thead className="text-gray-900 bg-gray-300/20 text-sm h-[53px] rounded-md">
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
