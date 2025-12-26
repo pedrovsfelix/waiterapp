@@ -1,19 +1,27 @@
 import { Home, Refresh } from "../icons";
 
-export default function Header() {
+interface HeaderProps {
+  icon?: React.ReactNode;
+  title?: string;
+  description?: string;
+  rightAction?: React.ReactNode;
+}
+
+export default function Header({ icon, title, description, rightAction}: HeaderProps) {
   return (
     <header className="h-[72px] w-full flex justify-between">
       <div>
         <div className="flex items-center">
-          <Home className="w-5 h-5 text-black"/>
-          <h1 className="font-bold ml-1">Home</h1>
+          <div>
+            {icon}
+          </div>
+          <h1 className="font-bold ml-1">{title}</h1>
         </div>
-        <p className="text-gray-400 mt-4">Acompanhe os pedidos dos clientes</p>
+        <p className="text-gray-400 mt-4">{description}</p>
       </div>
 
       <div className="flex items-center text-primary text-h6 font-bold">
-        <Refresh/>
-        <p className="ml-2">Reiniciar o dia</p>
+        {rightAction}
       </div>
 
     </header>
