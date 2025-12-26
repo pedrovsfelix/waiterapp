@@ -21,6 +21,9 @@ import { isAuthenticated } from './app/middleware/auth.js';
 import { me } from './app/useCases/auth/me.js';
 import { deleteProduct } from './app/useCases/products/deleteProduct.js';
 import { listUsers } from './app/useCases/users/listUsers.js';
+import { deleteUser } from './app/useCases/users/deleteUser.js';
+import { changeUser } from './app/useCases/users/changeUser.js';
+import { updateMe } from './app/useCases/users/me.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -84,3 +87,12 @@ router.get('/users/me', isAuthenticated, me);
 
 // List Users
 router.get('/users', listUsers);
+
+// Delete User
+router.delete('/users/:userId', deleteUser);
+
+// Change Users
+router.patch('/users/:userId', changeUser);
+
+// Change User
+router.patch('/me', isAuthenticated, updateMe);
